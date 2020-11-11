@@ -4,9 +4,9 @@ from django.forms import ModelChoiceField
 from .models import *
 
 
-# class CategoryAdmin(admin.ModelAdmin):
-#
-#     list_display = ['name', 'slug']
+class CategoryAdmin(admin.ModelAdmin):
+
+    list_display = ['name', 'slug']
 
 
 class Design(admin.ModelAdmin):
@@ -66,7 +66,7 @@ class CarouselAdmin(admin.ModelAdmin):
     list_display = ['id']
 
 
-# admin.site.register(Category, CategoryAdmin)
+admin.site.register(Category, CategoryAdmin)
 # admin.site.register(Button, ButtonAdmin)
 # admin.site.register(Shoes, ShoesAdmin)
 admin.site.register(Top, TopAdmin)
