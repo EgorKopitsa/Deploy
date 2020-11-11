@@ -1,0 +1,109 @@
+{% extends 'base_one.html' %}
+{% load static %}
+{% load mathfilters%}
+{% block content %}
+
+    <h3 class="text-center my-5">Ваша корзина {% if not cart.products.count %}пуста{% endif %}</h3>
+
+    {% if cart.final_price > 14350 %}
+        <div class="jumbotron">
+            <i class="fas fa-exclamation-circle"></i>
+            Из-за <strong>политики Яндекса</strong>, разовый платеж на сумму <strong>более 15000,00 руб</strong> невозможен.
+            Просим разбить заказ так, чтобы сумма разового заказа <strong>не привышала 15000,00 руб.</strong> Также необходимо учесть стоимость <strong><a href="{% url 'info' %}">доставки</a></strong>.
+        </div>
+    {% endif %}
+
+    {% if cart.products.count %}
+        <div class="table-responsive text-center"> {# адаптивность таблицы #}
+            <table class="table">
+                <thead class="table-thead">
+                <tr>
+                    <th>Наименование</th>
+                    <th>Изображение</th>
+                    <th>Цена</th>
+                    <th>Кол-во</th>
+                    <th>Размер</th>
+                    <th>Общая цена</th>
+                    <th>Дейсвтвие</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in cart.products.all %}
+                    <tr>
+                        <th>{{ item.content_object.title }}</th>
+
+                        <td class="w-25">
+                            {% for item in item.content_object.images.all %}
+                                {% if forloop.counter == 1 %}
+                                    <img src="{{ item.images.url }}" class="img-fluid" alt="Что-то пошло не так!">
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+
+                        <td>{{ item.content_object.price }} ₽</td>
+
+                        <form action="{% url 'change_qty_size' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}" method="post">
+                            {% csrf_token %}
+                            <td>
+                                <input type="number" class="form-control" id="make" name="qty" min="1" value="{{ item.qty }}">
+                            </td>
+                            <td>
+                                <select class="form-control" name="size" value="{{ item.size }}">
+                                    {% if item.size == '' %}
+                                        <option>{{ item.size }}</option>
+                                        {% for dimension in item.content_object.dimensions.split %}
+                                            <option>{{ dimension }}</option>
+                                        {% endfor %}
+                                    {% else %}
+                                        <option>{{ item.size }}</option>
+                                        {% for dimension in item.content_object.dimensions.split %}
+                                            {% if dimension != item.size %}
+                                                <option>{{ dimension }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </select>
+                                <br>
+                                <input type="submit" class="btn" id="btn_make" value="Внести">
+                            </td>
+                        </form>
+
+                        <td>{{ item.final_price }} ₽</td>
+
+                        <td>
+                            <a href="{% url 'delete_from_cart' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}"><button class="btn" id="btn_delete">Удалить</button></a>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                <tr>
+
+                    <td colspan="2"></td>
+                    <td>Итог:</td>
+                    <td>{{ cart.total_products }}</td>
+                    <td></td>
+                    <td><strong>{{ cart.final_price }} <i class="fas fa-ruble-sign"></i></strong></td>
+                    {% if cart.final_price <= 14350 %}
+
+                        {% if size_count != 0 %}
+                            <td><button class="btn btn-success disabled" title="Необходимо указать все размеры!">Перейти к оформлению</button></td>
+                        {% else %}
+                            <td><a href="{% url 'checkout' %}"><button class="btn btn-success">Перейти к оформлению</button></a></td>
+                        {% endif %}
+
+                    {% else %}
+                        <td><button class="btn btn-success disabled" title="Необходимо уменьшить сумму заказа!">Перейти к оформлению</button></td>
+                    {% endif %}
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    {% else %}
+        <section class="text-center mt-5">
+            <img src="{% static '/images/cart.png' %}" alt="Что-то пошло не так!" class="img-responsive" width="35%" height="35%">
+        </section>
+    {% endif %}
+
+{% endblock content %}

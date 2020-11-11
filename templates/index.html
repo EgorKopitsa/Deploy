@@ -1,0 +1,70 @@
+{% extends 'base_one.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="text-center py-1">
+        <img src="{% static '/images/logo.png' %}" alt="Что-то пошло не так!" class="img-responsive" width="50%" height="50%">
+    </section>
+
+    <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+
+        <ol class="carousel-indicators">
+            {% for carousel in carousels %}
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ carousel.id }}"></li>
+            {% endfor %}
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+            {% for carousel in carousels %}
+                {%  if forloop.counter == 1 %}
+                    <div class="carousel-item active">
+                        <img class="d-block img-fluid" src="{{ carousel.images.url }}" alt="Что-то пошло не так!">
+                    </div>
+                {% else %}
+                    <div class="carousel-item">
+                        <img class="d-block img-fluid" src="{{ carousel.images.url }}" alt="Что-то пошло не так!">
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+
+    <h1 class="text-center mt-5 mb-5">Магазин</h1>
+
+    <div class="row">
+        {% for product in products %}
+            <div class="col-lg-4 col-md-4 col-xs-6 mb-4">
+                <div class="card h-100 text-center" id="card">
+                    <a href="{{ product.get_absolute_url }}">
+                        {% for product in product.images.all %}
+                            {% if forloop.counter == 1 %}
+                                <img class="card-img-top" src="{{ product.images.url }}" alt="Что-то пошло не так!">
+                            {% endif %}
+                        {% endfor %}
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                        </h4>
+                        <h5>Наличие <i class="fas fa-check-circle"></i></h5>
+                        <h4>{{ product.price }} <i class="fas fa-ruble-sign"></i></h4>
+                        <a href="{{ product.get_absolute_url }}" >
+                            <button class="btn btn-secondary btn-block">Подробнее <i class="fas fa-angle-double-right"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

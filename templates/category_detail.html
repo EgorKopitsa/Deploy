@@ -1,0 +1,40 @@
+{% extends 'base_one.html' %}
+{% load static %}
+{% block content %}
+
+    <nav aria-label="breadcrumb" class="mt-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active">{{ category.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        {% for product in category_products %}
+            <div class="col-lg-4 col-md-6 col-xs-12 mb-4">
+                <div class="card h-100 text-center" id="card">
+                    <a href="{{ product.get_absolute_url }}">
+                        {% for product in product.images.all %}
+                            {% if forloop.counter == 1 %}
+                                <img class="card-img-top" src="{{ product.images.url }}" alt="Что-то пошло не так!">
+                            {% endif %}
+                        {% endfor %}
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                        </h4>
+                        {% if product.available %}
+                            <h5>Наличие <i class="fas fa-check-circle"></i></h5>
+                        {% else %}
+                            <h5>Наличие <i class="fas fa-times-circle" id="fas_black"></i></h5>
+                        {% endif %}
+                        <h4>{{ product.price }} <i class="fas fa-ruble-sign"></i></h4>
+                        <a href="{{ product.get_absolute_url }}">
+                            <button class="btn btn-secondary btn-block">Подробнее <i class="fas fa-angle-double-right"></i></button></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,59 @@
+{% extends 'base_one.html' %}
+{% load static %}
+{% block content %}
+
+    {% if orders.count >= 1 %}
+
+    <h3 class="text-center my-5">Ваши заказы</h3>
+
+    <div class="row">
+        {% for order in orders reversed %}
+            <div class="col-lg-6  col-xs-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body my-3">
+                        <h4 class="text-center">Заказ №{{ order.id }}</h4>
+                        <p>Телефон: {{ order.phone }}<br>
+                            Email: {{ order.email }}<br>
+                            Адрес: {{ order.address }}<br>
+                            {% for delivery in deliveries %}
+                                {% if order.delivery == delivery.where %}
+                                    Цена: <strong>{{ order.delivery_price|add:delivery.price }} <i class="fas fa-ruble-sign"></i></strong>
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+                        <p>
+                            <a href="{% url 'info' %}">Статус заказа:</a> {{ order.status }}
+                            {% if order.status == 'Отправлен'%}
+                                <i class="fas fa-box" id="fas_black"></i><br>
+                                Ваш трек номер: <strong>{{ order.track_number }}</strong>
+                            {% elif order.status == 'Оплачен' %}
+                                <i class="fas fa-check-circle" id="fas_green"></i>
+                            {% elif order.status == 'В обработке' %}
+                                <i class="fas fa-clock"></i>
+                            {% elif order.status == 'Не оплачен' %}
+                                <i class="fas fa-times-circle" id="fas_red"></i>
+                            {% endif %}
+                        </p>
+                        <p class="text-center">
+                            <a href="/payment/{{ order.id }}">
+                                <button class="btn btn-secondary btn-block">Подробнее <i class="fas fa-angle-double-right"></i></button>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+
+       <h3 class="text-center mt-3 mb-5">У вас нет заказов</h3>
+
+        <section class="text-center">
+            <img src="{% static '/images/papyrus.png' %}" alt="Что-то пошло не так!" class="img-responsive" width="35%" height="35%">
+        </section>
+
+    {% endif %}
+
+
+{% endblock %}

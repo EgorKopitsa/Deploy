@@ -1,0 +1,63 @@
+{% extends 'base_one.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+        <h3 class="text-center mt-3 mb-5">Оформление заказа</h3>
+
+        <div class="table-responsive">
+        <table class="table">
+            <thead class="table-thead">
+            <tr>
+                <th scope="col">Наименование</th>
+                <th scope="col">Изображение</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Кол-во</th>
+                <th scope="col">Размер</th>
+                <th scope="col">Общая цена</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for item in cart.products.all %}
+                <tr>
+                    <th scope="row">{{ item.content_object.title }}</th>
+                    <td class="w-25">
+                        {% for item in item.content_object.images.all %}
+                            {% if forloop.counter == 1 %}
+                                <img src="{{ item.images.url }}" class="img-fluid" alt="Что-то пошло не так!">
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ item.content_object.price }} руб.</td>
+                    <td>{{ item.qty }}</td>
+                    <td>{{ item.size }}</td>
+                    <td>{{ item.final_price }} руб.</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="2"></td>
+                <td>Итог:</td>
+                <td>{{ cart.total_products }}</td>
+                <td></td>
+                <td><strong>{{ cart.final_price }} руб.</strong></td>
+            </tr>
+            </tbody>
+
+        </table>
+        </div>
+
+        <div class="jumbotron mt-5" id="form_checkout">
+
+            <h3 class="text-center mt-5 mb-5">Форма заказа</h3>
+
+            <form action="{% url 'make_order' %}" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                {% if request.user.is_authenticated %}
+                    <input type="submit" class="btn btn-secondary btn-block mb-3" value="Оформить заказ">
+                {% endif %}
+            </form>
+
+        </div>
+
+{% endblock %}

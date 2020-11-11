@@ -1,0 +1,19 @@
+{% extends 'base_two.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <form method="post" action="{% url 'login' %}">{% csrf_token %}
+        <div class="jumbotron">
+            {{ form|crispy }}
+            <button class="btn btn-secondary" type="submit">Войти</button>
+            <div class="mt-4 text-center">
+                <p>
+                    Еще нет у нас? <a href="{% url 'register' %}">Зарегистрируйтесь!</a><br><br>
+                    <a href="{% url 'index' %}">Вернуться на главную!</a>
+                </p>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

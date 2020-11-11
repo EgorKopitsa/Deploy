@@ -1,0 +1,63 @@
+{% extends 'base_one.html' %}
+{% load static %}
+{% block content %}
+
+        <div class="row">
+
+            <div class="col-lg-6 my-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3>Социальные сети</h3>
+                        <p class="text">Все свежие новости тут.</p>
+                        <p><i class="fab fa-instagram"></i> <a href="https://instagram.com/albmont.project?igshid=1ow9ehrff9y2i">Instagram</a></p>
+                        <p><i class="fab fa-vk"></i> <a href="https://vk.com/albmont">Vkontakte</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 my-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3>Контакты</h3>
+                        <p class="text">По всем вопросам обращайтесь на почту.</p>
+                        <p><i class="fas fa-at"></i> albmont.studio@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 my-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Оплата</h5>
+                        <p class="text">Оплата осуществляется с помощью платежных систем, предоставляемых Яндексом.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 my-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Доставка</h5>
+                        <p class="text">Доставка осуществляется по всему миру.<br><br>
+                            Стоимость доставки:<br>Россия 300 руб.<br>Другие страны 650 руб.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 my-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Статусы заказа</h5>
+                        <p class="text">
+                            <strong>1.</strong> Не оплачен <i class="fas fa-times-circle" id="fas_red"></i> Если заказ оформлен, но не оплачен.<br>
+                            <strong>2.</strong> В обработке <i class="fas fa-clock"></i> Менеджер проверяет заказ.<br>
+                            <strong>3.</strong> Оплачен <i class="fas fa-check-circle" id="fas_green"></i> Менеджер отправляет заказ<br>
+                            <strong>4.</strong> Отправлен <i class="fas fa-box" id="fas_black"></i> Заказ отправлен. Предоставляется трек номер для отслеживания.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+{% endblock %}

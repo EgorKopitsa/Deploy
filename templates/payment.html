@@ -1,0 +1,95 @@
+{% extends 'base_one.html' %}
+{% load mathfilters%}
+{% block content %}
+
+        <h3 class="text-center my-5">Проверка данных заказа №{{ order.id }}</h3>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="table-thead">
+                <tr>
+                    <th scope="col">Наименование</th>
+                    <th scope="col">Изображение</th>
+                    <th scope="col">Цена</th>
+                    <th scope="col">Кол-во</th>
+                    <th scope="col">Размер</th>
+                    <th scope="col">Общая цена</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for item in cart_arrange.products.all %}
+                    <tr>
+                        <th scope="row">{{ item.content_object.title }}</th>
+                        <td class="w-25">
+                            {% for item in item.content_object.images.all %}
+                                {% if forloop.counter == 1 %}
+                                    <img src="{{ item.images.url }}" class="img-fluid" alt="Что-то пошло не так!">
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ item.content_object.price }} ₽</td>
+                        <td>{{ item.qty }}</td>
+                        <td>{{ item.size }}</td>
+                        <td>{{ item.final_price }} ₽</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2"></td>
+                    <td>Итог:</td>
+                    <td>{{ cart_arrange.total_products }}</td>
+                    <td></td>
+                    <td><strong>{{ cart_arrange.final_price }} <i class="fas fa-ruble-sign"></i></strong></td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div class="row jumbotron mt-5 mx-1" id="form_payment">
+            <div class="col-lg-6">
+                <p>
+                    Имя: {{ order.first_name }}<br>
+                    Фамилия: {{ order.last_name }}<br>
+                    Номер телефона: {{ order.phone }}<br>
+                    Email: {{ order.email }}<br>
+                    Доставка: {{ order.delivery }} <strong>(стоимость {{ delivery.price }} <i class="fas fa-ruble-sign"></i>)</strong><br>
+                    Адрес: {{ order.address }}<br>
+                    Комментарий: {{ order.comment }}<br>
+                    Итоговая цена: <strong>{{ order.delivery_price|add:delivery.price }} <i class="fas fa-ruble-sign"></i></strong><br>
+
+                    {% if order.status == 'Отправлен' or order.status == 'Оплачен' %}
+                        Ваш трек номер:
+                        {% if order.status == 'Отправлен' %}
+                            <strong>{{ order.track_number }}</strong>
+                        {% elif order.status == 'Оплачен' %}
+                            скоро появится
+                        {% endif %}
+                        </p>
+                {% endif %}
+            </div>
+            <div class="col-lg-6">
+                {% if order.status == 'Не оплачен' or order.status == 'В обработке'  %}
+                    <h3 class="text-center mt-3 mb-3">Способы оплата</h3>
+                    <div class="text-center">
+                        <form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
+                            <input type="hidden" name="receiver" value="4100115660519733">
+                            <input type="hidden" name="quickpay-form" value="donate">
+                            <input type="hidden" name="targets" value="Оплата заказа №{{ order.id }}">
+                            <input type="hidden" name="sum" value="{{ order.delivery_price|add:delivery.price }}" data-type="number">
+                            <label><input type="radio" name="paymentType" value="PC">Яндекс.Деньгами</label>
+                            <label><input type="radio" name="paymentType" value="AC">Банковской картой</label>
+                            <br>
+                            <input type="submit" class="btn btn-success mt-2" value="Оплатить">
+                        </form>
+                    </div>
+                {% else %}
+                    {% if order.status == 'Отправлен' %}
+                        <h3 class="text-center mt-3 mb-3">Спасибо за заказ! Ожидайте доставку. <i class="fas fa-dolly"></i></h3>
+                    {% elif order.status == 'Оплачен' %}
+                        <h3 class="text-center mt-3 mb-3">Спасибо за заказ! Ожидайте отправку вашего заказа. <i class="fas fa-envelope-open-text"></i></h3>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+{% endblock content %}

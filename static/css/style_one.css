@@ -1,0 +1,187 @@
+    /*base*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html,
+body {
+    padding-top: 30px;
+    height: 100%;
+    background-color: #CFCFCF;
+}
+.wrapper {
+    position: relative;
+    min-height: 100%;
+}
+.content {
+    padding-bottom: 90px;
+}
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #999999;
+}
+.navbar {
+    background-color: #999999;
+}
+@media screen and (min-width: 800px){
+    .container {
+        width: 75%;
+    }
+}
+
+.container .navbar-toggler {
+    border-color: white;
+    color: white;
+}
+
+#navbarResponsive li a {
+    color: white;
+    text-decoration: none;
+}
+
+#navbarResponsive li i {
+    color: white;
+}
+
+.dropdown button {
+    background-color: #999999;
+    border-color: transparent;
+    color: white;
+}
+
+.dropdown-menu {
+    background-color: #999999;
+    border-color: white;
+}
+
+.dropdown-menu a {
+    color: white;
+}
+.dropdown-menu a span {
+    background-color: black;
+}
+
+/*index, category_detail*/
+
+#card {
+    background-color: #999999;
+    border: none;
+}
+h4 a {
+    color: #4a4a4a;
+}
+h5 i {
+    color: cornsilk;
+}
+.card-body a {
+    text-decoration: none;
+}
+.card-body a button {
+    color: white;
+}
+
+/*info*/
+
+.card-body p a {
+    color: black;
+}
+.card-body .text {
+    color: grey;
+}
+#fas_red {
+    color: darkred;
+}
+#fas_green {
+    color: green;
+}
+#fas_black {
+    color:black;
+}
+
+/*category_detail*/
+
+#fas_black {
+    color: black;
+}
+
+/*product_detail */
+
+.container nav {
+    width: 100%;
+}
+.container nav ol li a {
+    color: grey;
+    text-decoration: underline;
+}
+
+#jumbotron_padding {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.container .jumbotron p i {
+    color: black;
+}
+.container .jumbotron a button {
+    color: black;
+    background-color: cornsilk;
+}
+
+/*cart */
+
+.container .jumbotron strong a {
+    color: black;
+}
+.container .table-responsive .table .table-thead {
+    background-color: #999999;
+    color: white;
+}
+.container .table-responsive .table tr th {
+    border-color: #999999;
+}
+.container .table-responsive .table tr td {
+    border-color: #999999;
+}
+.container #make {
+    width: 70px;
+}
+.container .table-responsive .table tr td #btn_make {
+    background-color: grey;
+    color: white;
+}
+.container .table-responsive .table tr td a #btn_delete {
+    background-color: dimgray;
+    color: white;
+}
+
+/*checkout */
+
+#form_checkout {
+    background-color: white;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+/*payment */
+
+#form_payment {
+    background-color: white;
+}
+
+/*orders*/
+
+.container .card-body p a {
+    color: black;
+    text-decoration: underline;
+}
+.container .card-body .text-center a {
+    text-decoration: none;
+}
+.container .card-body .text-center a button {
+    color: white;
+}
