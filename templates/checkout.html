@@ -8,12 +8,12 @@
         <table class="table">
             <thead class="table-thead">
             <tr>
-                <th scope="col">Наименование</th>
-                <th scope="col">Изображение</th>
-                <th scope="col">Цена</th>
-                <th scope="col">Кол-во</th>
-                <th scope="col">Размер</th>
-                <th scope="col">Общая цена</th>
+                <th>Наименование</th>
+                <th>Изображение</th>
+                <th>Цена</th>
+                <th>Кол-во</th>
+                <th>Размер</th>
+                <th >Общая цена</th>
             </tr>
             </thead>
 
@@ -28,18 +28,16 @@
                             {% endif %}
                         {% endfor %}
                     </td>
-                    <td>{{ item.content_object.price }} руб.</td>
+                    <td>{{ item.content_object.price }} ₽</td>
                     <td>{{ item.qty }}</td>
                     <td>{{ item.size }}</td>
-                    <td>{{ item.final_price }} руб.</td>
+                    <td>{{ item.final_price }} ₽</td>
                 </tr>
             {% endfor %}
             <tr>
-                <td colspan="2"></td>
-                <td>Итог:</td>
-                <td>{{ cart.total_products }}</td>
-                <td></td>
-                <td><strong>{{ cart.final_price }} руб.</strong></td>
+                <td colspan="4"></td>
+                <td><strong>Итог:</strong></td>
+                <td><strong>{{ cart.final_price }} <i class="fas fa-ruble-sign"></i></strong></td>
             </tr>
             </tbody>
 

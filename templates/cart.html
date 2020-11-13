@@ -13,6 +13,7 @@
     {% endif %}
 
     {% if cart.products.count %}
+
         <div class="table-responsive text-center"> {# адаптивность таблицы #}
             <table class="table">
                 <thead class="table-thead">
@@ -77,22 +78,20 @@
                 {% endfor %}
                 <tr>
 
-                    <td colspan="2"></td>
-                    <td>Итог:</td>
-                    <td>{{ cart.total_products }}</td>
-                    <td></td>
-                    <td><strong>{{ cart.final_price }} <i class="fas fa-ruble-sign"></i></strong></td>
                     {% if cart.final_price <= 14350 %}
-
                         {% if size_count != 0 %}
                             <td><button class="btn btn-success disabled" title="Необходимо указать все размеры!">Перейти к оформлению</button></td>
                         {% else %}
                             <td><a href="{% url 'checkout' %}"><button class="btn btn-success">Перейти к оформлению</button></a></td>
                         {% endif %}
-
                     {% else %}
                         <td><button class="btn btn-success disabled" title="Необходимо уменьшить сумму заказа!">Перейти к оформлению</button></td>
                     {% endif %}
+
+                    <td colspan="3"></td>
+                    <td><strong>Итог:</strong></td>
+                    <td><strong>{{ cart.final_price }} <i class="fas fa-ruble-sign"></i></strong></td>
+                    <td colspan="1"></td>
 
                 </tr>
                 </tbody>

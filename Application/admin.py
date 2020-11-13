@@ -66,6 +66,10 @@ class CarouselAdmin(admin.ModelAdmin):
     list_display = ['id']
 
 
+class DeliveryAdmiin(admin.ModelAdmin):
+    list_display = ['where']
+
+
 admin.site.register(Category, CategoryAdmin)
 # admin.site.register(Button, ButtonAdmin)
 # admin.site.register(Shoes, ShoesAdmin)
@@ -75,4 +79,4 @@ admin.site.register(CartProduct, CartProductAdmin)
 admin.site.register(Customer)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Carousel, CarouselAdmin)
-admin.site.register(Delivery)
+admin.site.register(Delivery, DeliveryAdmiin)

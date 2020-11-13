@@ -8,12 +8,12 @@
             <table class="table">
                 <thead class="table-thead">
                 <tr>
-                    <th scope="col">Наименование</th>
-                    <th scope="col">Изображение</th>
-                    <th scope="col">Цена</th>
-                    <th scope="col">Кол-во</th>
-                    <th scope="col">Размер</th>
-                    <th scope="col">Общая цена</th>
+                    <th>Наименование</th>
+                    <th>Изображение</th>
+                    <th>Цена</th>
+                    <th>Кол-во</th>
+                    <th>Размер</th>
+                    <th>Общая цена</th>
                 </tr>
                 </thead>
 
@@ -35,10 +35,8 @@
                     </tr>
                 {% endfor %}
                 <tr>
-                    <td colspan="2"></td>
-                    <td>Итог:</td>
-                    <td>{{ cart_arrange.total_products }}</td>
-                    <td></td>
+                    <td colspan="4"></td>
+                    <td><strong>Итог:</strong></td>
                     <td><strong>{{ cart_arrange.final_price }} <i class="fas fa-ruble-sign"></i></strong></td>
                 </tr>
                 </tbody>
