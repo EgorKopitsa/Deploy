@@ -174,8 +174,9 @@ class MakeOrderView(CartMixin, View):
         if form.is_valid():
             new_order = form.save(commit=False)
             new_order.customer = customer
-            new_order.first_name = request.user.first_name
-            new_order.last_name = request.user.last_name
+            new_order.first_name = form.cleaned_data['first_name']
+            new_order.last_name = form.cleaned_data['last_name']
+            new_order.index = form.cleaned_data['index']
             new_order.phone = form.cleaned_data['phone']
             new_order.address = form.cleaned_data['address']
             new_order.comment = form.cleaned_data['comment']
