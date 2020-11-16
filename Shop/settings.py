@@ -93,9 +93,9 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'Shop',
-            'USER': 'albmont',
-            'PASSWORD': '4C@BmDwF!6PxJt',
+            'NAME': 'shopBD',
+            'USER': 'albmont_admin',
+            'PASSWORD': 'rbnvjrnvoprentovr',
             'HOST': 'localhost',
             'PORT': '',
         }
