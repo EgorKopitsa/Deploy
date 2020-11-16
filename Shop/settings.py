@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ack5vg4-7g!vs@cru)vq#z(tduwf79
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['albmont-shop.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['46.101.240.249']
 
 
 # Application definition
