@@ -93,7 +93,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'shopBD',
+            'NAME': 'shopbd',
             'USER': 'albmont_admin',
             'PASSWORD': 'rbnvjrnvoprentovr',
             'HOST': 'localhost',
