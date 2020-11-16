@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ack5vg4-7g!vs@cru)vq#z(tduwf79
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['159.89.102.126']
+ALLOWED_HOSTS = ['104.248.44.205']
 
 
 # Application definition
