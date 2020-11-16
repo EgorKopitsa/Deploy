@@ -38,6 +38,8 @@
 
     </div>
 
+    {% if product.count %}
+
     <h1 class="text-center mt-5 mb-5">Магазин</h1>
 
     <div class="row">
@@ -65,5 +67,8 @@
             </div>
         {% endfor %}
     </div>
+    {% else %}
+        <h1 class="text-center mt-5 mb-5">Товаров пока нет, но скоро они появятся!</h1>
+    {% endif %}
 
 {% endblock %}
