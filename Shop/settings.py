@@ -94,7 +94,7 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'Shop',
-            'USER': 'Egor',
+            'USER': 'albmont',
             'PASSWORD': '4C@BmDwF!6PxJt',
             'HOST': 'localhost',
             'PORT': '',
