@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load crispy_forms_tags %}
+{% load static %}
 <html lang="ru">
 
 <head>
@@ -8,29 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Almbont</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/png" href="https://downloader.disk.yandex.ru/preview/b050a8f56a8dc70cdec6fd5448860a0bbb3b1e8f89c4edb8a2a882f2310ed15f/5faea501/U7KTFhhfI6nzrASmuhkynQ56JzZK-Wxc8XwlFwPFmX0sCSgjxCy5nWGq8JjUbKDH_S9W7L9_Yu2sboZdHYtdww%3D%3D?uid=0&filename=logomin.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048" />
+    <link rel="shortcut icon" type="image/png" href="{% static '/img/logomin.png' %}"/>
+    <link rel="stylesheet" href="{% static 'css/base_two_style.css' %}" type="text/css">
 
 </head>
-
-<style>
-    body {
-    background-color: #CFCFCF;
-}
-@media screen and (min-width: 800px){
-    .container {
-        width: 35%;
-    }
-}
-
-/*login, register */
-
-.container form .jumbotron {
-    background-color: white;
-}
-.container form .jumbotron p a {
-    color: #999999;
-}
-</style>
 
 <body>
 

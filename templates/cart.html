@@ -1,5 +1,6 @@
 {% extends 'base_one.html' %}
 {% load mathfilters%}
+{% load static %}
 {% block content %}
 
     <h3 class="text-center my-5">Ваша корзина {% if not cart.products.count %}пуста{% endif %}</h3>
@@ -100,7 +101,7 @@
 
     {% else %}
         <section class="text-center mt-5">
-            <img src="https://1.downloader.disk.yandex.ru/preview/2ed1de895d0d62c0c9d50f1d51889d0955df19ce7f086f37fc0fc9c514f2ad97/inf/FF1mwcYyEGqQ2u1M3fQ9VywxNYtuAmvbWfy0ENE5lyijTNExOeuBR7VT2wrI4DHaISuj661e9NpoVe-FIp4gJw%3D%3D?uid=1195615986&filename=cart.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1195615986&tknv=v2&size=1349x695" alt="Что-то пошло не так!" class="img-responsive" width="35%" height="35%">
+            <img src="{% static '/img/cart.png' %}" alt="Что-то пошло не так!" class="img-responsive" width="35%" height="35%">
         </section>
     {% endif %}
 
