@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ack5vg4-7g!vs@cru)vq#z(tduwf79176xldu9#syul3d%ba4_')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = T
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['178.128.199.53', 'albmont.com', '127.0.0.1']
