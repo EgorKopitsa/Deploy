@@ -137,7 +137,7 @@ class CartView(CartMixin, View):
     def get(self, request, *args, **kwargs):
         categories = Category.objects.get_categories_for_left_sidebar()
         dimensions = self.cart.products.all()
-        size_count = CartProduct.objects.filter(size="").count()
+        size_count = self.cart.products.filter(size="").count()
         context = {
             'cart': self.cart,
             'categories': categories,
@@ -168,7 +168,6 @@ class MakeOrderView(CartMixin, View):
 
     @transaction.atomic
     def post(self, request, *args, **kwargs):
-        cart = Cart.objects.last()
         form = OrderForm(request.POST or None)
         customer = Customer.objects.get(user=request.user)
         if form.is_valid():
@@ -180,7 +179,7 @@ class MakeOrderView(CartMixin, View):
             new_order.phone = form.cleaned_data['phone']
             new_order.address = form.cleaned_data['address']
             new_order.comment = form.cleaned_data['comment']
-            new_order.delivery_price = cart.final_price
+            new_order.delivery_price = self.cart.final_price
             new_order.save()
             self.cart.in_order = True
             self.cart.save()

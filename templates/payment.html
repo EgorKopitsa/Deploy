@@ -35,9 +35,8 @@
                     </tr>
                 {% endfor %}
                 <tr>
-                    <td colspan="4"></td>
-                    <td><strong>Итог:</strong></td>
-                    <td><strong>{{ cart_arrange.final_price }} <i class="fas fa-ruble-sign"></i></strong></td>
+                    <td><strong>Итог: {{ cart_arrange.final_price }} <i class="fas fa-ruble-sign"></i></strong></td>
+                    <td colspan="5"></td>
                 </tr>
                 </tbody>
 
@@ -46,8 +45,9 @@
         <div class="row jumbotron mt-5 mx-1" id="form_payment">
             <div class="col-lg-6">
                 <p>
-                    Имя: {{ order.first_name }}<br>
-                    Фамилия: {{ order.last_name }}<br>
+                    Имя (Получателя): {{ order.first_name }}<br>
+                    Фамилия (Получателя): {{ order.last_name }}<br>
+                    Заказчик: {{ order.customer }}<br>
                     Номер телефона: {{ order.phone }}<br>
                     Email: {{ order.email }}<br>
                     Доставка: {{ order.delivery }} <strong>(стоимость {{ delivery.price }} <i class="fas fa-ruble-sign"></i>)</strong><br>

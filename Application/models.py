@@ -210,6 +210,7 @@ class Order(models.Model):
 
     DELIVERY_RUSSIA = 'Россия'
     DELIVERY_OTHER_COUNTRIES = 'Другие страны'
+    DELIVERY_PICKUP_FROM_MOSCOW = 'Самовывоз из Москвы'
 
     STATUS_CHOICES = (
         (STATUS_SENT, 'Отправлен'),
@@ -220,7 +221,8 @@ class Order(models.Model):
 
     DELIVERY_CHOICES = (
         (DELIVERY_RUSSIA, 'Россия'),
-        (DELIVERY_OTHER_COUNTRIES, 'Другие страны')
+        (DELIVERY_OTHER_COUNTRIES, 'Другие страны'),
+        (DELIVERY_PICKUP_FROM_MOSCOW, 'Самовывоз из Москвы')
     )
 
     customer = models.ForeignKey(Customer, verbose_name='Покупатель (Заказчик)', related_name='related_orders', on_delete=models.CASCADE)
@@ -259,10 +261,12 @@ class Delivery(models.Model):
 
     DELIVERY_RUSSIA = 'Россия'
     DELIVERY_OTHER_COUNTRIES = 'Другие страны'
+    DELIVERY_PICKUP_FROM_MOSCOW = 'Самовывоз из Москвы'
 
     DELIVERY_CHOICES = (
         (DELIVERY_RUSSIA, 'Россия'),
-        (DELIVERY_OTHER_COUNTRIES, 'Другие страны')
+        (DELIVERY_OTHER_COUNTRIES, 'Другие страны'),
+        (DELIVERY_PICKUP_FROM_MOSCOW, 'Самовывоз из Москвы')
     )
 
     where = models.CharField(max_length=100, verbose_name='Куда', choices=DELIVERY_CHOICES, default=DELIVERY_RUSSIA)

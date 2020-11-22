@@ -50,7 +50,7 @@ class TopAdmin(Design):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'first_name', 'last_name', 'status', 'track_number', 'cart', 'delivery_price', 'created_at']
+    list_display = ['id', 'customer', 'status', 'track_number', 'cart', 'delivery_price', 'created_at']
     list_editable = ['status', 'track_number']
 
 
