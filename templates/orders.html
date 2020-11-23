@@ -26,7 +26,11 @@
                             <a href="{% url 'info' %}">Статус заказа:</a> {{ order.status }}
                             {% if order.status == 'Отправлен'%}
                                 <i class="fas fa-box" id="fas_black"></i><br>
-                                Ваш трек номер: <strong>{{ order.track_number }}</strong>
+                                {% if order.delivery == 'Самовывоз из Москвы' %}
+                                    Пункт выдачи: <strong>{{ order.track_number }}</strong>
+                                {% else %}
+                                    Ваш трек номер: <strong>{{ order.track_number }}</strong>
+                                {% endif %}
                             {% elif order.status == 'Оплачен' %}
                                 <i class="fas fa-check-circle" id="fas_green"></i>
                             {% elif order.status == 'В обработке' %}
