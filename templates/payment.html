@@ -52,6 +52,7 @@
                     Email: {{ order.email }}<br>
                     Доставка: {{ order.delivery }} <strong>(стоимость {{ delivery.price }} <i class="fas fa-ruble-sign"></i>)</strong><br>
                     Индекс: {{ order.index }}<br>
+                    Город: {{ order.city }}<br>
                     Адрес: {{ order.address }}<br>
                     Комментарий: {{ order.comment }}<br>
                     Итоговая цена: <strong>{{ order.delivery_price|add:delivery.price }} <i class="fas fa-ruble-sign"></i></strong><br>

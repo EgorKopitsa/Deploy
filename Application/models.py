@@ -232,6 +232,7 @@ class Order(models.Model):
     email = models.CharField(max_length=50, verbose_name='Email', default='')
     cart = models.ForeignKey(Cart, verbose_name='Корзина', on_delete=models.CASCADE, null=True, blank=True)
     index = models.CharField(max_length=255, verbose_name='Индекс', default='')
+    city = models.CharField(max_length=255, verbose_name='Город', default='')
     address = models.CharField(max_length=1024, verbose_name='Адрес', default='')
     status = models.CharField(max_length=100, verbose_name='Статус заказа', choices=STATUS_CHOICES, default=STATUS_IN_PROCESSING)
     comment = models.TextField(verbose_name='Комментарий к заказу', null=True, blank=True)
@@ -275,6 +276,3 @@ class Delivery(models.Model):
     class Meta:
         verbose_name = 'Доставка'
         verbose_name_plural = 'Доставка'
-
-
-

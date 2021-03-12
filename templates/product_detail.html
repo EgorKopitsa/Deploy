@@ -53,7 +53,6 @@
             <p>Описание: {{ product.description }}</p>
 
             {% if product.available %}
-                <p>Наличие: <i class="fas fa-check-circle"></i></p>
                 <p>Доступные размеры: {{ product.dimensions }}</p>
                 <hr>
                 {% if request.user.is_authenticated %}

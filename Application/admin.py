@@ -62,11 +62,11 @@ class CartAdmin(admin.ModelAdmin):
     list_display = ['id', 'final_price']
 
 
-class CarouselAdmin(admin.ModelAdmin):
-    list_display = ['id']
+# class CarouselAdmin(admin.ModelAdmin):
+#     list_display = ['id']
 
 
-class DeliveryAdmiin(admin.ModelAdmin):
+class DeliveryAdmin(admin.ModelAdmin):
     list_display = ['where']
 
 
@@ -78,5 +78,5 @@ admin.site.register(Cart, CartAdmin)
 admin.site.register(CartProduct, CartProductAdmin)
 admin.site.register(Customer)
 admin.site.register(Order, OrderAdmin)
-admin.site.register(Carousel, CarouselAdmin)
-admin.site.register(Delivery, DeliveryAdmiin)
+# admin.site.register(Carousel, CarouselAdmin)
+admin.site.register(Delivery, DeliveryAdmin)

@@ -1,4 +1,5 @@
 {% extends 'base_one.html' %}
+{% load static %}
 {% block content %}
 
         <div class="row">
@@ -8,8 +9,20 @@
                     <div class="card-body">
                         <h3>Социальные сети</h3>
                         <p class="text">Все свежие новости тут.</p>
-                        <p><i class="fab fa-instagram"></i> <a href="https://instagram.com/albmont.project?igshid=1ow9ehrff9y2i">Instagram</a></p>
-                        <p><i class="fab fa-vk"></i> <a href="https://vk.com/albmont">Vkontakte</a></p>
+
+                            <div class="row">
+                                <div class="col">
+                                    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+                                    <!— VK Widget —>
+                                    <div id="vk_groups"></div>
+                                    <script type="text/javascript">
+                                    VK.Widgets.Group("vk_groups", {mode: 3, no_cover: 1, color1: 'E4E2E2', color2: '070606', color3: '7D8185'}, 135730597);
+                                    </script>
+                                </div>
+                                <div class="col">
+                                    <a href="https://www.instagram.com/albmont.project/?igshid=1ow9ehrff9y2i"><img src="{% static '/img/card.png' %}" alt="Что-то пошло не так!" width="90%"></a>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

@@ -176,6 +176,7 @@ class MakeOrderView(CartMixin, View):
             new_order.first_name = form.cleaned_data['first_name']
             new_order.last_name = form.cleaned_data['last_name']
             new_order.index = form.cleaned_data['index']
+            new_order.city = form.cleaned_data['city']
             new_order.phone = form.cleaned_data['phone']
             new_order.address = form.cleaned_data['address']
             new_order.comment = form.cleaned_data['comment']
@@ -262,8 +263,3 @@ class BrandView(CartMixin, View):
             'orders': self.orders
         }
         return render(request, 'brand.html', context)
-
-
-
-
-
